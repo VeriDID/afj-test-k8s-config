@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: afj-test-deployment
+  namespace: afj-test-app
+  labels:
+    app: afj-test
+spec:
+  selector:
+    matchLabels:
+      app: afj-test
+  replicas: 1
+  # strategy: 
+  # type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: afj-test
+    spec:
+      containers:
+        - name: docker-build
+          image: "ghcr.io/veridid/afj-test:latest"
+
+          imagePullPolicy: Always
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: postgres-user
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: postgres-password
+            - name: POSTGRES_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-config
+                  key: postgres-url
+      imagePullSecrets:
+        - name: ghcr-secret
