@@ -19,8 +19,7 @@ spec:
     spec:
       containers:
         - name: docker-build
-          image: "ghcr.io/veridid/afj-test:latest"
-
+          image: "ghcr.io/veridid/afj-test:sha-c9f429b"
           imagePullPolicy: Always
           env:
             - name: POSTGRES_USER
