@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: docker-build
-          image: "ghcr.io/veridid/afj-test:sha-c9f429b"
+          image: "ghcr.io/veridid/afj-test:sha-5f80858"
           imagePullPolicy: Always
           env:
             - name: COGNITO_USER_POOL_ID
@@ -37,20 +37,20 @@ spec:
                 secretKeyRef:
                   name: cognito-secret
                   key: cognito-region
-            # - name: POSTGRES_USER
-            #   valueFrom:
-            #     secretKeyRef:
-            #       name: postgres-secret
-            #       key: postgres-user
-            # - name: POSTGRES_PASSWORD
-            #   valueFrom:
-            #     secretKeyRef:
-            #       name: postgres-secret
-            #       key: postgres-password
-            # - name: POSTGRES_HOST
-            #   valueFrom:
-            #     configMapKeyRef:
-            #       name: postgres-config
-            #       key: postgres-url
+                  # - name: POSTGRES_USER
+                  #   valueFrom:
+                  #     secretKeyRef:
+                  #       name: postgres-secret
+                  #       key: postgres-user
+                  # - name: POSTGRES_PASSWORD
+                  #   valueFrom:
+                  #     secretKeyRef:
+                  #       name: postgres-secret
+                  #       key: postgres-password
+                  # - name: POSTGRES_HOST
+                  #   valueFrom:
+                  #     configMapKeyRef:
+                  #       name: postgres-config
+                  #       key: postgres-url
       imagePullSecrets:
         - name: ghcr-secret
