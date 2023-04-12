@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: veridid-dev-argo
+  name: afj-test-argo
   namespace: argocd
 spec: 
   project: default
